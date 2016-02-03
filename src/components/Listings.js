@@ -16,8 +16,9 @@ export default class Listings extends React.Component {
 					className="form-control wid" 
 					placeholder="Listing Title" 
 					onChange={this.update}/><br />
-					<input type="text" value={this.state.newPageDesc} 
+					<textarea type="text" value={this.state.newPageDesc} 
 					className="form-control wid" 
+					rows='5'
 					placeholder="Description" 
 					onChange={this.update1} 
 					onKeyPress={this.createPage} />

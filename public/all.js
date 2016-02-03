@@ -23222,6 +23222,10 @@ var _componentsApp = require('./components/App');
 
 var _componentsApp2 = _interopRequireDefault(_componentsApp);
 
+var _componentsHeader = require('./components/Header');
+
+var _componentsHeader2 = _interopRequireDefault(_componentsHeader);
+
 var Route = _reactRouter2['default'].Route;
 
 var routes = _react2['default'].createElement(Route, { handler: _componentsApp2['default'] });
@@ -23229,8 +23233,11 @@ var routes = _react2['default'].createElement(Route, { handler: _componentsApp2[
 _reactRouter2['default'].run(routes, _reactRouter2['default'].HistoryLocation, function (Root) {
   return _react2['default'].render(_react2['default'].createElement(Root, null), document.getElementById('app'));
 });
+_reactRouter2['default'].run(routes, _reactRouter2['default'].HistoryLocation, function (Root) {
+  return _react2['default'].render(_react2['default'].createElement(_componentsHeader2['default'], null), document.getElementById('head'));
+});
 
-},{"./components/App":202,"react":199,"react-router":27}],202:[function(require,module,exports){
+},{"./components/App":202,"./components/Header":203,"react":199,"react-router":27}],202:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -23314,7 +23321,74 @@ var App = (function (_React$Component) {
 exports['default'] = App;
 module.exports = exports['default'];
 
-},{"./Listings":203,"./Login":204,"react":199,"react-router":27}],203:[function(require,module,exports){
+},{"./Listings":204,"./Login":205,"react":199,"react-router":27}],203:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouter = require('react-router');
+
+var _reactRouter2 = _interopRequireDefault(_reactRouter);
+
+var Header = (function (_React$Component) {
+    _inherits(Header, _React$Component);
+
+    function Header() {
+        _classCallCheck(this, Header);
+
+        _get(Object.getPrototypeOf(Header.prototype), 'constructor', this).apply(this, arguments);
+    }
+
+    _createClass(Header, [{
+        key: 'render',
+        value: function render() {
+            return _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(
+                    'nav',
+                    { className: 'navbar navbar-full navbar-default' },
+                    _react2['default'].createElement(
+                        'div',
+                        { className: 'container-fluid' },
+                        _react2['default'].createElement(
+                            'div',
+                            { className: 'navbar-header' },
+                            _react2['default'].createElement(
+                                'a',
+                                { className: 'navbar-brand', href: '#' },
+                                _react2['default'].createElement('img', { id: 'logo', alt: 'Brand', src: '/img/airbnb.png' })
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Header;
+})(_react2['default'].Component);
+
+exports['default'] = Header;
+module.exports = exports['default'];
+
+},{"react":199,"react-router":27}],204:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -23390,8 +23464,9 @@ var Listings = (function (_React$Component) {
 							placeholder: 'Listing Title',
 							onChange: this.update }),
 						_react2['default'].createElement('br', null),
-						_react2['default'].createElement('input', { type: 'text', value: this.state.newPageDesc,
+						_react2['default'].createElement('textarea', { type: 'text', value: this.state.newPageDesc,
 							className: 'form-control wid',
+							rows: '5',
 							placeholder: 'Description',
 							onChange: this.update1,
 							onKeyPress: this.createPage })
@@ -23407,7 +23482,7 @@ var Listings = (function (_React$Component) {
 exports['default'] = Listings;
 module.exports = exports['default'];
 
-},{"../api":200,"react":199}],204:[function(require,module,exports){
+},{"../api":200,"react":199}],205:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {

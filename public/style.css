@@ -19,7 +19,7 @@
 }
 
 body {
-  padding: 50px;
+
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -49,4 +49,19 @@ a {
 
 .wid{
   width: 75%;
+}
+
+#logo{
+  width: 90px;
+  margin-top: -24px;
+  height: auto;
+}
+
+textarea{ 
+  
+  max-width:75%; 
+
+  height:200px; 
+  min-height:200px;  
+
 }
