@@ -5,9 +5,14 @@ export default class Login extends React.Component {
     render() {
         if (this.props.user)
             return <div className='row'>
-                <p> Hi {this.props.user.username}! </p>
-                <p> <button onClick={this.signout}> Sign Out </button> </p>
+            <div className='col-md-12'>
+                <p>  
+                 <button className="btn btn-default fr" onClick={this.signout}> Sign Out </button> </p>
+                 <br /><br />
+                 <center><span id="hi">Hi {this.props.user.username}!</span></center>
+            </div>
             </div>;
+            
 
         return (<div>
             <div className="inbl">

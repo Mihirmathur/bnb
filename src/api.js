@@ -13,4 +13,4 @@ export const signin = (username, password) => post('/api/signin', { username, pa
 export const signup = (username, password) => post('/api/signup', { username, password });
 export const signout = () => post('/api/signout');
 
-export const hosts = new Firebase('https://clonebnb.firebaseio.com/hosts');
+export const listings = new Firebase('https://clonebnb.firebaseio.com/listings');
