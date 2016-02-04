@@ -23226,9 +23226,17 @@ var _componentsHeader = require('./components/Header');
 
 var _componentsHeader2 = _interopRequireDefault(_componentsHeader);
 
+var _componentsPage = require('./components/Page');
+
+var _componentsPage2 = _interopRequireDefault(_componentsPage);
+
 var Route = _reactRouter2['default'].Route;
 
-var routes = _react2['default'].createElement(Route, { handler: _componentsApp2['default'] });
+var routes = _react2['default'].createElement(
+  Route,
+  { handler: _componentsApp2['default'] },
+  _react2['default'].createElement(Route, { name: 'page', path: '/page/:id', handler: _componentsPage2['default'] })
+);
 
 _reactRouter2['default'].run(routes, _reactRouter2['default'].HistoryLocation, function (Root) {
   return _react2['default'].render(_react2['default'].createElement(Root, null), document.getElementById('app'));
@@ -23237,7 +23245,7 @@ _reactRouter2['default'].run(routes, _reactRouter2['default'].HistoryLocation, f
   return _react2['default'].render(_react2['default'].createElement(_componentsHeader2['default'], null), document.getElementById('head'));
 });
 
-},{"./components/App":202,"./components/Header":203,"react":199,"react-router":27}],202:[function(require,module,exports){
+},{"./components/App":202,"./components/Header":203,"./components/Page":206,"react":199,"react-router":27}],202:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -23415,6 +23423,8 @@ var _api = require('../api');
 
 var API = _interopRequireWildcard(_api);
 
+var _reactRouter = require('react-router');
+
 var Listings = (function (_React$Component) {
 	_inherits(Listings, _React$Component);
 
@@ -23426,6 +23436,8 @@ var Listings = (function (_React$Component) {
 		_get(Object.getPrototypeOf(Listings.prototype), 'constructor', this).apply(this, arguments);
 
 		this.state = {
+			loaded: false,
+			pages: {},
 			newPageTitle: '',
 			newPageDesc: ''
 		};
@@ -23446,8 +23458,35 @@ var Listings = (function (_React$Component) {
 	}
 
 	_createClass(Listings, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var _this2 = this;
+
+			API.listings.on('value', function (ss) {
+				return _this2.setState({
+					pages: ss.exportVal() || {},
+					loaded: true
+				});
+			});
+		}
+	}, {
 		key: 'render',
 		value: function render() {
+			var _this3 = this;
+
+			var items = Object.keys(this.state.pages).map(function (id) {
+				return _react2['default'].createElement(
+					'li',
+					{ key: id },
+					_react2['default'].createElement(
+						_reactRouter.Link,
+						{ to: 'page', params: { id: id } },
+						' ',
+						_this3.state.pages[id].title
+					)
+				);
+			});
+
 			return _react2['default'].createElement(
 				'div',
 				null,
@@ -23469,9 +23508,18 @@ var Listings = (function (_React$Component) {
 							rows: '5',
 							placeholder: 'Description',
 							onChange: this.update1,
-							onKeyPress: this.createPage })
+							onKeyPress: this.createPage }),
+						_react2['default'].createElement(
+							'ul',
+							null,
+							items.props
+						)
 					)
-				) : null
+				) : _react2['default'].createElement(
+					'ul',
+					null,
+					items
+				)
 			);
 		}
 	}]);
@@ -23482,7 +23530,7 @@ var Listings = (function (_React$Component) {
 exports['default'] = Listings;
 module.exports = exports['default'];
 
-},{"../api":200,"react":199}],205:[function(require,module,exports){
+},{"../api":200,"react":199,"react-router":27}],205:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -23643,6 +23691,83 @@ var Login = (function (_React$Component) {
 })(_react2['default'].Component);
 
 exports['default'] = Login;
+module.exports = exports['default'];
+
+},{"../api":200,"react":199}],206:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+	value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _api = require('../api');
+
+var API = _interopRequireWildcard(_api);
+
+var Page = (function (_React$Component) {
+	_inherits(Page, _React$Component);
+
+	function Page() {
+		var _this = this;
+
+		_classCallCheck(this, Page);
+
+		_get(Object.getPrototypeOf(Page.prototype), 'constructor', this).apply(this, arguments);
+
+		this.state = {
+			page: {}
+		};
+
+		this.updateContent = function (snaphot) {
+			var json = snapshot.exportVal();
+			_this.setState({
+				page: json
+			});
+		};
+	}
+
+	_createClass(Page, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			API.listings.child(this.props.params.id).on('value', this.updateContent);
+		}
+	}, {
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(nextProps) {
+			API.listings.child(this.props.params.id).off('value', this.updateContent);
+			API.listings.child(nextProps.params.id).on('value', this.updateContent);
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return _react2['default'].createElement(
+				'div',
+				null,
+				this.page.title
+			);
+		}
+	}]);
+
+	return Page;
+})(_react2['default'].Component);
+
+exports['default'] = Page;
 module.exports = exports['default'];
 
 },{"../api":200,"react":199}]},{},[201]);
