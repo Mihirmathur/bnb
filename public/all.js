@@ -27143,23 +27143,27 @@ var App = (function (_React$Component) {
                 'div',
                 null,
                 _react2['default'].createElement(
-                    'div',
-                    { className: 'row' },
+                    'center',
+                    null,
                     _react2['default'].createElement(
                         'div',
-                        { className: 'col-md-10' },
-                        this.props.user ? null : _react2['default'].createElement(
-                            'h1',
-                            null,
-                            'CloneBnb Host'
+                        { className: 'row' },
+                        _react2['default'].createElement(
+                            'div',
+                            { className: 'col-md-12' },
+                            _react2['default'].createElement(_Login2['default'], { user: this.state.user, setUser: this.setUser })
                         ),
-                        _react2['default'].createElement(_Login2['default'], { user: this.state.user, setUser: this.setUser }),
-                        _react2['default'].createElement(_Listings2['default'], { user: this.state.user })
-                    ),
-                    _react2['default'].createElement(
-                        'div',
-                        { className: 'col-md-6' },
-                        _react2['default'].createElement(_reactRouter.RouteHandler, { user: this.state.user })
+                        _react2['default'].createElement('br', null),
+                        _react2['default'].createElement(
+                            'div',
+                            null,
+                            _react2['default'].createElement(_Listings2['default'], { user: this.state.user })
+                        ),
+                        _react2['default'].createElement(
+                            'div',
+                            { className: 'col-md-6' },
+                            _react2['default'].createElement(_reactRouter.RouteHandler, { user: this.state.user })
+                        )
                     )
                 )
             );
@@ -27225,6 +27229,20 @@ var Header = (function (_React$Component) {
                                 'a',
                                 { className: 'navbar-brand', href: '#' },
                                 _react2['default'].createElement('img', { id: 'logo', alt: 'Brand', src: '/img/airbnb.png' })
+                            )
+                        ),
+                        _react2['default'].createElement(
+                            'div',
+                            { className: 'nav navbar-nav navbar-right' },
+                            _react2['default'].createElement(
+                                'div',
+                                { className: 'clonebnb' },
+                                'clonebnb',
+                                _react2['default'].createElement(
+                                    'span',
+                                    { className: 'red sm' },
+                                    ' HOST'
+                                )
                             )
                         )
                     )
@@ -27351,13 +27369,14 @@ var Listings = (function (_React$Component) {
 
 			var items = Object.keys(this.state.pages).map(function (id) {
 				return _react2['default'].createElement(
-					'li',
-					{ key: id },
+					'div',
+					null,
 					_react2['default'].createElement(
-						_reactRouter.Link,
-						{ to: 'page', params: { id: id } },
-						' ',
-						_this3.state.pages[id].title
+						'li',
+						{ className: 'list-group-item', key: id },
+						_this3.state.pages[id].title,
+						_react2['default'].createElement('br', null),
+						_react2['default'].createElement('img', { className: 'list_img', src: _this3.state.pages[id].img })
 					)
 				);
 			});
@@ -27367,47 +27386,80 @@ var Listings = (function (_React$Component) {
 				null,
 				this.props.user ? _react2['default'].createElement(
 					'div',
-					{ className: 'col-md-12' },
-					_react2['default'].createElement('br', null),
-					_react2['default'].createElement('br', null),
+					null,
+					_react2['default'].createElement('div', { className: 'col-md-2' }),
 					_react2['default'].createElement(
-						'center',
-						null,
-						_react2['default'].createElement('input', { type: 'text', value: this.state.newPageTitle,
-							className: 'form-control wid',
-							placeholder: 'Listing Title',
-							onChange: this.update }),
+						'div',
+						{ className: 'col-md-8 card' },
 						_react2['default'].createElement('br', null),
-						_react2['default'].createElement('textarea', { type: 'text', value: this.state.newPageDesc,
-							className: 'form-control wid',
-							rows: '5',
-							placeholder: 'Description',
-							onChange: this.update1,
-							onKeyPress: this.createPage }),
+						_react2['default'].createElement(
+							'center',
+							null,
+							_react2['default'].createElement(
+								'span',
+								{ id: 'hi' },
+								'Hi ',
+								this.props.user.username,
+								'!'
+							)
+						),
 						_react2['default'].createElement('br', null),
 						_react2['default'].createElement(
 							'span',
-							{ className: 'btn btn-default btn-file', onClick: this.upFile },
-							'Browse an image...'
+							null,
+							'Add a listing'
 						),
-						_react2['default'].createElement('br', null),
 						_react2['default'].createElement('br', null),
 						_react2['default'].createElement(
-							'button',
-							{ className: 'file btn btn-primary',
-								onClick: this.createPage1 },
-							'Submit'
-						),
+							'center',
+							null,
+							_react2['default'].createElement('input', { type: 'text', value: this.state.newPageTitle,
+								className: 'form-control wid',
+								placeholder: 'Listing Title',
+								onChange: this.update }),
+							_react2['default'].createElement('br', null),
+							_react2['default'].createElement('textarea', { type: 'text', value: this.state.newPageDesc,
+								className: 'form-control wid',
+								rows: '5',
+								placeholder: 'Description',
+								onChange: this.update1,
+								onKeyPress: this.createPage }),
+							_react2['default'].createElement('br', null),
+							_react2['default'].createElement(
+								'span',
+								{ className: 'btn btn-default btn-file', onClick: this.upFile },
+								'Browse an image...'
+							),
+							_react2['default'].createElement('br', null),
+							_react2['default'].createElement('br', null),
+							_react2['default'].createElement(
+								'button',
+								{ className: 'file btn btn-primary',
+									onClick: this.createPage1 },
+								'Submit'
+							),
+							_react2['default'].createElement(
+								'ul',
+								{ className: '' },
+								items.props
+							)
+						)
+					),
+					_react2['default'].createElement('div', { className: 'col-md-2' })
+				) : _react2['default'].createElement(
+					'div',
+					{ className: 'col-md-12' },
+					_react2['default'].createElement('div', { className: 'col-md-4' }),
+					_react2['default'].createElement(
+						'div',
+						{ className: 'col-md-4' },
 						_react2['default'].createElement(
 							'ul',
-							null,
-							items.props
+							{ className: 'list-group' },
+							items
 						)
-					)
-				) : _react2['default'].createElement(
-					'ul',
-					null,
-					items
+					),
+					_react2['default'].createElement('div', { className: 'col-md-4' })
 				)
 			);
 		}
@@ -27500,78 +27552,85 @@ var Login = (function (_React$Component) {
                         ' '
                     ),
                     _react2['default'].createElement('br', null),
-                    _react2['default'].createElement('br', null),
-                    _react2['default'].createElement(
-                        'center',
-                        null,
-                        _react2['default'].createElement(
-                            'span',
-                            { id: 'hi' },
-                            'Hi ',
-                            this.props.user.username,
-                            '!'
-                        )
-                    )
+                    _react2['default'].createElement('br', null)
                 )
             );
 
             return _react2['default'].createElement(
                 'div',
                 null,
+                _react2['default'].createElement('br', null),
+                _react2['default'].createElement('div', { className: 'col-md-4' }),
                 _react2['default'].createElement(
                     'div',
-                    { className: 'inbl' },
+                    { className: 'col-md-4 card card-block' },
                     _react2['default'].createElement(
-                        'div',
-                        { className: 'inbl' },
+                        'center',
+                        null,
                         _react2['default'].createElement(
-                            'div',
-                            { className: 'input-group' },
-                            _react2['default'].createElement(
-                                'span',
-                                { className: 'input-group-addon', id: 'basic-addon1' },
-                                _react2['default'].createElement('i', { className: 'fa fa-envelope-o' })
-                            ),
-                            _react2['default'].createElement('input', { id: 'name', type: 'text', className: 'form-control', ref: 'username',
-                                placeholder: 'Username', 'aria-describedby': 'basic-addon1' })
-                        )
-                    ),
-                    '  ',
-                    _react2['default'].createElement(
-                        'div',
-                        { className: 'inbl' },
-                        _react2['default'].createElement(
-                            'div',
-                            { className: 'input-group' },
-                            _react2['default'].createElement(
-                                'span',
-                                { className: 'input-group-addon', id: 'basic-addon1' },
-                                _react2['default'].createElement('i', { className: 'fa fa-key' })
-                            ),
-                            _react2['default'].createElement('input', { id: 'pw', type: 'password', className: 'form-control', ref: 'password', placeholder: 'Password', 'aria-describedby': 'basic-addon1' })
-                        )
-                    ),
-                    _react2['default'].createElement('br', null),
-                    _react2['default'].createElement(
-                        'div',
-                        { className: 'inbl' },
-                        _react2['default'].createElement(
-                            'p',
+                            'h4',
                             null,
+                            'Welcome to clonebnb host.'
+                        ),
+                        _react2['default'].createElement(
+                            'h5',
+                            null,
+                            'Login or signup.'
+                        ),
+                        _react2['default'].createElement(
+                            'div',
+                            { className: 'mid' },
                             _react2['default'].createElement(
-                                'button',
-                                { className: 'btn btn-default', onClick: this.signin },
-                                ' Sign In '
-                            ),
-                            '  ',
+                                'div',
+                                { className: 'input-group' },
+                                _react2['default'].createElement(
+                                    'span',
+                                    { className: 'input-group-addon', id: 'basic-addon1' },
+                                    _react2['default'].createElement('i', { className: 'fa fa-envelope-o' })
+                                ),
+                                _react2['default'].createElement('input', { id: 'name', type: 'text', className: 'form-control', ref: 'username',
+                                    placeholder: 'Username', 'aria-describedby': 'basic-addon1' })
+                            )
+                        ),
+                        '  ',
+                        _react2['default'].createElement(
+                            'div',
+                            { className: '' },
                             _react2['default'].createElement(
-                                'button',
-                                { className: 'btn btn-default', onClick: this.signup },
-                                ' Sign Up '
+                                'div',
+                                { className: 'input-group' },
+                                _react2['default'].createElement(
+                                    'span',
+                                    { className: 'input-group-addon', id: 'basic-addon1' },
+                                    _react2['default'].createElement('i', { className: 'fa fa-key' })
+                                ),
+                                _react2['default'].createElement('input', { id: 'pw', type: 'password', className: 'form-control', ref: 'password', placeholder: 'Password', 'aria-describedby': 'basic-addon1' })
+                            )
+                        ),
+                        _react2['default'].createElement('br', null),
+                        _react2['default'].createElement('br', null),
+                        _react2['default'].createElement(
+                            'div',
+                            { className: '' },
+                            _react2['default'].createElement(
+                                'p',
+                                null,
+                                _react2['default'].createElement(
+                                    'button',
+                                    { className: 'btn btn-default', onClick: this.signin },
+                                    ' Sign In '
+                                ),
+                                '  ',
+                                _react2['default'].createElement(
+                                    'button',
+                                    { className: 'btn btn-default', onClick: this.signup },
+                                    ' Sign Up '
+                                )
                             )
                         )
                     )
-                )
+                ),
+                _react2['default'].createElement('div', { className: 'col-md-4' })
             );
         }
     }]);

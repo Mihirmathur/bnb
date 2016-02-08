@@ -1,0 +1,1 @@
+<Link to='page' params={{id:id}} > </Link>

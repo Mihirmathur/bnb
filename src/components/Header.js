@@ -10,6 +10,10 @@ export default class Header extends React.Component {
                     <a className="navbar-brand" href="#">
                         <img id="logo" alt="Brand" src="/img/airbnb.png"/>
                     </a>
+                    
+                </div>
+                <div className="nav navbar-nav navbar-right">
+                <div className="clonebnb">clonebnb<span className="red sm"> HOST</span></div>
                 </div>
             </div>
         </nav>
