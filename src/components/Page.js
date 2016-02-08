@@ -12,16 +12,20 @@ export default class Page extends React.Component {
 		API.listings.child(this.props.params.id).off('value', this.updateContent);
 		API.listings.child(nextProps.params.id).on('value', this.updateContent);
 	}
+	
+
 	updateContent = (snaphot) => {
 		let json = snapshot.exportVal();
 		this.setState({
-			page: json
+			page: json,
+			desc: json.description
 		});
 	}
 
 	render(){
+		let sections=[];
 		return <div>
-			{this.page.title}
+			{this.state.page.title}
 		</div>;
 	}
 }

@@ -20,6 +20,7 @@
     "ejs": "^2.3.3",
     "express": "^4.13.3",
     "express-session": "^1.11.3",
+    "filepicker-js": "^2.4.0",
     "firebase": "^2.2.9",
     "markdown": "^0.5.0",
     "react": "^0.13.3",
