@@ -15,7 +15,7 @@ export default class App extends React.Component {
                 <Login user={this.state.user} setUser={this.setUser}/>
                 
                 </div>
-                <br />
+                <br /><br /> <br />
                 <div>
                 <Listings user={this.state.user} />
                 </div>

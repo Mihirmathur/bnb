@@ -27154,6 +27154,9 @@ var App = (function (_React$Component) {
                             _react2['default'].createElement(_Login2['default'], { user: this.state.user, setUser: this.setUser })
                         ),
                         _react2['default'].createElement('br', null),
+                        _react2['default'].createElement('br', null),
+                        ' ',
+                        _react2['default'].createElement('br', null),
                         _react2['default'].createElement(
                             'div',
                             null,
@@ -27373,10 +27376,13 @@ var Listings = (function (_React$Component) {
 					null,
 					_react2['default'].createElement(
 						'li',
-						{ className: 'list-group-item', key: id },
+						{ className: 'list-group-item col-md-4', key: id },
 						_this3.state.pages[id].title,
 						_react2['default'].createElement('br', null),
-						_react2['default'].createElement('img', { className: 'list_img', src: _this3.state.pages[id].img })
+						_react2['default'].createElement('img', { className: 'list_img', src: _this3.state.pages[id].img }),
+						_react2['default'].createElement('br', null),
+						'Posted By: ',
+						_this3.state.pages[id].host
 					)
 				);
 			});
@@ -27448,18 +27454,35 @@ var Listings = (function (_React$Component) {
 					_react2['default'].createElement('div', { className: 'col-md-2' })
 				) : _react2['default'].createElement(
 					'div',
-					{ className: 'col-md-12' },
-					_react2['default'].createElement('div', { className: 'col-md-4' }),
+					{ className: 'col-md-12 cl' },
+					_react2['default'].createElement('br', null),
+					_react2['default'].createElement('br', null),
+					_react2['default'].createElement('br', null),
+					_react2['default'].createElement('br', null),
 					_react2['default'].createElement(
 						'div',
-						{ className: 'col-md-4' },
+						{ className: 'panel panel-primary' },
 						_react2['default'].createElement(
-							'ul',
-							{ className: 'list-group' },
-							items
+							'div',
+							{ className: 'panel-heading' },
+							'Recent Listings'
+						),
+						_react2['default'].createElement('br', null),
+						_react2['default'].createElement('br', null),
+						_react2['default'].createElement(
+							'div',
+							{ className: 'panel-body' },
+							_react2['default'].createElement(
+								'div',
+								null,
+								_react2['default'].createElement(
+									'ul',
+									{ className: 'list-group' },
+									items
+								)
+							)
 						)
-					),
-					_react2['default'].createElement('div', { className: 'col-md-4' })
+					)
 				)
 			);
 		}
@@ -27630,7 +27653,9 @@ var Login = (function (_React$Component) {
                         )
                     )
                 ),
-                _react2['default'].createElement('div', { className: 'col-md-4' })
+                _react2['default'].createElement('div', { className: 'col-md-4' }),
+                _react2['default'].createElement('br', null),
+                _react2['default'].createElement('br', null)
             );
         }
     }]);

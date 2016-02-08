@@ -23,10 +23,13 @@ export default class Listings extends React.Component {
 	}
 	render(){
 		let items = Object.keys(this.state.pages).map
-		(id=><div><li className="list-group-item" key={id}>
+		(id=><div><li className="list-group-item col-md-4" key={id}>
 			{this.state.pages[id].title}
 			<br />
-			<img className="list_img" src={this.state.pages[id].img}/></li></div>
+			<img className="list_img" src={this.state.pages[id].img}/>
+			<br />
+			Posted By: {this.state.pages[id].host}
+			</li></div>
 			);
 
 		return<div>
@@ -61,10 +64,15 @@ export default class Listings extends React.Component {
 			</div> 
 			<div className='col-md-2'></div>
 			</div> :
-			<div className="col-md-12">
-				<div className="col-md-4"></div>
-				<div className="col-md-4"><ul className="list-group">{items}</ul></div>
-				<div className="col-md-4"></div>
+			<div className="col-md-12 cl">
+			<br /><br /><br /><br />
+			<div className="panel panel-primary">
+			<div className="panel-heading">Recent Listings</div>
+			<br/><br/>
+			<div className='panel-body'>
+				<div><ul className="list-group">{items}</ul></div>
+			</div>
+			</div>
 			</div>
 
 			

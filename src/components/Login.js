@@ -53,7 +53,7 @@ export default class Login extends React.Component {
             </div>
             <div className="col-md-4"></div>
             
-            
+        <br /><br />            
 
         </div>);
         

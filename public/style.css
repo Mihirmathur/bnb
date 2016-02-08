@@ -87,11 +87,17 @@ a {
 
 }
 .list_img{
-  height: 100px;
-  width: 100px;
-
+  height: 250px;
+  width: 250px;
+  border-radius: 10px;
 }
 
+.list_img:hover{
+
+}
+.cl{
+  opacity: .85;
+}
 textarea{ 
   max-width:75%; 
   height:200px; 
